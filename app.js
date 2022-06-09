@@ -10,8 +10,7 @@ containerDiv.addEventListener("click", (e) => {
   // NUMBERS
   if (e.target.classList.contains("nums")) {
     if (e.target.classList.contains("box")) {
-      if (emptyBottom.innerText === "0" && e.target.innerText === "0") {
-      } else if (emptyBottom.innerText === "0") {
+      if (emptyBottom.innerText === "0" && e.target.innerText !== "0") {
         emptyBottom.innerText = e.target.innerText;
       } else {
         emptyBottom.innerText += e.target.innerText;
@@ -68,5 +67,12 @@ containerDiv.addEventListener("click", (e) => {
   // PERCENT
   if (e.target.classList.contains("box__percent")) {
     emptyBottom.innerText *= 1 / 100;
+  }
+
+  // DOT
+  if (e.target.classList.contains("box__dot")) {
+    if (!emptyBottom.innerText.includes(e.target.innerText)) {
+      emptyBottom.innerText += e.target.innerText;
+    }
   }
 });
