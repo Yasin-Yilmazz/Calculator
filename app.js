@@ -12,16 +12,18 @@ containerDiv.addEventListener("click", (e) => {
     if (e.target.classList.contains("box")) {
       if (emptyBottom.innerText === "0" && e.target.innerText !== "0") {
         emptyBottom.innerText = e.target.innerText;
-      } else {
+      } else if (emptyBottom.innerText.length < 9) {
         emptyBottom.innerText += e.target.innerText;
       }
     }
   }
+
   //   CLEAR BUTTON
   else if (e.target.classList.contains("box__ac")) {
     emptyBottom.innerHTML = "0";
     emptyTop.innerHTML = "";
   }
+
   //   OPERATORS
   else if (e.target.classList.contains("op")) {
     if (e.target.classList.contains("op")) {
@@ -30,8 +32,8 @@ containerDiv.addEventListener("click", (e) => {
       emptyBottom.innerText = "0";
     }
   }
-  // CALCULATION
 
+  // CALCULATION
   if (e.target.classList.contains("box__equels")) {
     switch (operator) {
       case "+":
@@ -60,6 +62,7 @@ containerDiv.addEventListener("click", (e) => {
         break;
     }
   }
+
   // -+ BUTTON
   if (e.target.classList.contains("box__plus-minus")) {
     emptyBottom.innerText *= -1;
@@ -68,7 +71,6 @@ containerDiv.addEventListener("click", (e) => {
   if (e.target.classList.contains("box__percent")) {
     emptyBottom.innerText *= 1 / 100;
   }
-
   // DOT
   if (e.target.classList.contains("box__dot")) {
     if (!emptyBottom.innerText.includes(e.target.innerText)) {
